@@ -40,7 +40,7 @@ body {
   justify-content: center;
   padding: 0;
   margin: 0;
-  font-size: 14px;
+  font-size: 1.4vh;
 }
 
 .octo-arm {
@@ -88,11 +88,10 @@ div::before {
 .top {
   position: absolute;
   top: 1.9em;
-  left: 9.83em;
+  left: 9.53em;
   overflow: hidden;
   width: 15em;
   height: 15em;
-  transform: rotate(5deg);
 }
 
 .top::after {
@@ -310,8 +309,8 @@ div::before {
 
 .backneck {
   position: absolute;
-  top: 14.8em;
-  left: 13.6em;
+  top: 14.4em;
+  left: 13.8em;
   overflow: hidden;
   width: 17em;
   height: 17em;

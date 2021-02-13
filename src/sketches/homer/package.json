@@ -1,0 +1,8 @@
+{
+  "name": "homer",
+  "version": "0.0.1",
+  "description": "Homer Simpson drawn entirely with circles only on pure css.",
+  "author": "Evgeniy Podivilov <evgeniy.podivilov@gmail.com> (https://twitter.com/senior_idealist)",
+  "license": "MIT",
+  "homepage": "https://epodivilov.github.io/homer"
+}

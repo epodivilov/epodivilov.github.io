@@ -14,8 +14,6 @@ const settings = {
   rays: 6,
 };
 
-window.settings = settings;
-
 document.body.classList.add(settings.theme);
 
 function initPane(options) {
@@ -125,23 +123,3 @@ function initCanvas(options) {
 
 initPane(settings);
 initCanvas(settings);
-
-function ttt(params) {
-  settings.hue = 0;
-  // settings.circles = 1;
-  // settings.rays = 1;
-
-  let int = null;
-
-  setTimeout(() => {
-    int = setInterval(() => {
-      if (settings.hue < 360) {
-        settings.hue = settings.hue + 1;
-      } else {
-        clearInterval(int);
-      }
-    }, 80);
-  }, 10000);
-}
-
-window.ttt = ttt;

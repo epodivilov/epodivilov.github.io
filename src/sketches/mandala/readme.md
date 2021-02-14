@@ -1,2 +1,3 @@
-# mandala
-<!-- FIXME: write short description -->
+# Mandala
+
+Simple canvas animation

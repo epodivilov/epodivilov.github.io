@@ -35,6 +35,24 @@ body.light {
 }
 
 body .tp-dfwv {
+  bottom: 8px;
   width: auto;
   min-width: 256px;
+}
+
+.octo-arm {
+  transform-origin: 130px 106px;
+}
+
+.github-corner:hover .octo-arm {
+  animation: octocat-wave 560ms ease-in-out;
+}
+
+.github-corner svg {
+  position: absolute;
+  top: 0;
+  right: 0;
+  border: 0;
+  color: #fff;
+  fill: #151513;
 }

@@ -35,9 +35,15 @@ body.light {
 }
 
 body .tp-dfwv {
+  top: auto;
   bottom: 8px;
   width: auto;
   min-width: 256px;
+}
+
+canvas {
+  width: 100%;
+  height: auto;
 }
 
 .octo-arm {

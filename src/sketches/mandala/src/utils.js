@@ -1,21 +1,5 @@
 /**
  * @param {Function} callback
- * @param {number} delay
- */
-export function debounce(callback, delay) {
-  let timeout = null;
-
-  return (...args) => {
-    clearTimeout(timeout);
-
-    timeout = setTimeout(() => {
-      callback(...args);
-    }, delay);
-  };
-}
-
-/**
- * @param {Function} callback
  * @param {number} fps
  * @returns {Function} call to start/re-start
  */

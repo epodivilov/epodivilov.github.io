@@ -1,17 +1,22 @@
-import { debounce, raf } from './utils';
+import { raf } from './utils';
 
+const prefersColorScheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
 const settings = {
   canvas: document.getElementById('canvas'),
-  theme: window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light',
+  theme: localStorage.getItem('theme') || prefersColorScheme,
   hue: 25,
   saturation: 60,
   lightness: 50,
-  circles: 17,
+  circles: 32,
   points: 500,
   offset: 2,
   speed: 1,
   rays: 6,
 };
+
+window.settings = settings;
+
+document.body.classList.add(settings.theme);
 
 function initPane(options) {
   const pane = new Tweakpane({ title: 'Parameters', expanded: false });
@@ -19,9 +24,11 @@ function initPane(options) {
     if (value === 'dark') {
       document.body.classList.add('dark');
       document.body.classList.remove('light');
+      localStorage.setItem('theme', 'dark');
     } else {
       document.body.classList.add('light');
       document.body.classList.remove('dark');
+      localStorage.setItem('theme', 'light');
     }
   });
   pane.addSeparator();
@@ -84,13 +91,18 @@ function pathFabric(context, options) {
  * @param {number} options.speed
  */
 function initCanvas(options) {
+  const size = 1000;
+  options.canvas.width = size;
+  options.canvas.height = size;
+
   /** @type {CanvasRenderingContext2D} */
   const context = options.canvas.getContext('2d');
+  context.translate(size / 2, size / 2);
 
   const draw = pathFabric(context, options);
 
   let hue = 0;
-  const render = raf((timestamp) => {
+  raf((timestamp) => {
     const { saturation, lightness, offset, speed, circles, theme } = options;
 
     const { width, height } = context.canvas;
@@ -98,31 +110,38 @@ function initCanvas(options) {
     context.fillStyle = theme === 'dark' ? '#152028' : '#E9FCFF';
     context.fillRect(-width / 2, -height / 2, width, height);
 
-    hue += 0.7;
+    // hue += 0.7;
 
     for (let i = 0; i < circles; i++) {
-      const radius = (width * 0.30) - i * 10;
+      const radius = width * 0.3 - i * 10;
       const color = `hsl(${hue + i * options.hue}, ${saturation}%, ${lightness}%)`;
       const step = (i * Math.PI) / offset + 3 * (timestamp / (2000 / speed));
-      const amplitude = (width * 0.05) + 1.5 * (circles - i) * Math.sin(timestamp / (1000 / speed));
+      const amplitude = width * 0.05 + 1.5 * (circles - i); /* * Math.sin(timestamp / (1000 / speed)) */
 
       draw(radius, color, amplitude, step);
     }
-  }, 24);
-
-  const resizeHandler = debounce(() => {
-    const size = Math.floor(Math.min(window.innerHeight, window.innerWidth) * 0.9);
-    options.canvas.width = size;
-    options.canvas.height = size;
-    context.translate(size / 2, size / 2);
-
-    render();
-  }, 500);
-
-  window.addEventListener('resize', resizeHandler);
-
-  resizeHandler();
+  }, 24)();
 }
 
 initPane(settings);
 initCanvas(settings);
+
+function ttt(params) {
+  settings.hue = 0;
+  // settings.circles = 1;
+  // settings.rays = 1;
+
+  let int = null;
+
+  setTimeout(() => {
+    int = setInterval(() => {
+      if (settings.hue < 360) {
+        settings.hue = settings.hue + 1;
+      } else {
+        clearInterval(int);
+      }
+    }, 80);
+  }, 10000);
+}
+
+window.ttt = ttt;

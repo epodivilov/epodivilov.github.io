@@ -1,0 +1,8 @@
+{
+  "name": "particle-trail",
+  "version": "0.0.1",
+  "description": "A trail of particles left by a magic wand.",
+  "author": "Evgeniy Podivilov <evgeniy.podivilov@gmail.com> (https://twitter.com/senior_idealist)",
+  "license": "MIT",
+  "homepage": "https://epodivilov.github.io/particle-trail"
+}

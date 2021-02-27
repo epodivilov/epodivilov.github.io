@@ -63,8 +63,9 @@ const settings = {
   controls: false,
 };
 const pane = new Tweakpane({ title: 'Parameters', expanded: false });
-pane.addInput(settings, 'controls');
+pane.addInput(settings, 'controls', { label: 'OrbitControls' });
 pane.addInput(settings, 'geometryIdx', {
+  label: 'Geometries',
   options: {
     'Apple surface': 0,
     Catenoid: 1,

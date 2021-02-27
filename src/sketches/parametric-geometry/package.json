@@ -1,0 +1,13 @@
+{
+  "name": "parametric-geometry",
+  "version": "0.0.1",
+  "description": "FIXME: write short description",
+  "author": "Evgeniy Podivilov <evgeniy.podivilov@gmail.com> (https://twitter.com/senior_idealist)",
+  "license": "MIT",
+  "homepage": "https://epodivilov.github.io/parametric-geometry",
+  "dependencies": {
+    "mathjs": "^9.2.0",
+    "three": "^0.125.2",
+    "tweakpane": "^2.0.0"
+  }
+}

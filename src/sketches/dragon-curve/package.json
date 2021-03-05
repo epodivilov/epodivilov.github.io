@@ -1,0 +1,11 @@
+{
+  "name": "dragon-curve",
+  "version": "0.0.1",
+  "description": "Dragon curve fractal on pure JS",
+  "author": "Evgeniy Podivilov <evgeniy.podivilov@gmail.com> (https://twitter.com/senior_idealist)",
+  "license": "MIT",
+  "homepage": "https://epodivilov.github.io/dragon-curve",
+  "dependencies": {
+    "tweakpane": "^2.0.0"
+  }
+}

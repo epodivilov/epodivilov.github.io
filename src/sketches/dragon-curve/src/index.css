@@ -5,11 +5,12 @@
 }
 
 body {
+  overflow: hidden;
   width: 100vw;
   height: 100vh;
   padding: 0;
   margin: 0;
-  overflow: hidden;
+  background-color: #152028;
 }
 
 .octo-arm {
@@ -39,4 +40,8 @@ body .tp-dfwv {
 body .tp-cswv_p {
   top: auto;
   bottom: var(--unit-size);
+}
+
+canvas {
+  position: absolute;
 }

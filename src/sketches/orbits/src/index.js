@@ -107,7 +107,7 @@ function makeObjects({ length, radius, size }) {
 const pane = new Tweakpane({ title: 'Parameters', expanded: false });
 const context = createContext();
 const settings = {
-  size: (Math.round((window.innerWidth * 0.5) / 100) * 100) / 2,
+  size: (Math.round((Math.min(window.innerWidth, window.innerHeight) * 0.5) / 100) * 100) / 2,
   radius: 10,
   length: 32,
   speed: 5,

@@ -31,6 +31,7 @@ body {
 }
 
 body .tp-dfwv {
+  z-index: 100;
   top: auto;
   bottom: 8px;
   width: auto;

@@ -55,8 +55,8 @@ class Object {
     this.radius = radius;
     this.orbit = orbit;
     this.color = color;
-    this.colorOrbit = `hsla(${color.match(/hsl\(([\d\.]+),/)[1]}, 50%, 50%, 0.25)`;
     this.offset = offset || 0;
+    this.opacity = 0;
   }
 
   /**
@@ -64,10 +64,12 @@ class Object {
    * @param {number} t
    */
   render(context, t) {
+    this.opacity = Math.min(this.opacity + t / 1000, 0.25);
+
     context.save();
     context.beginPath();
     context.fillStyle = 'transparent';
-    context.strokeStyle = this.colorOrbit;
+    context.strokeStyle = `hsla(${this.color}, 50%, 50%, ${this.opacity})`;
     context.lineWidth = devicePixelRatio;
     context.arc(this.x, this.y, this.orbit, 0, Math.PI * 2);
     context.closePath();
@@ -76,7 +78,7 @@ class Object {
 
     context.save();
     context.beginPath();
-    context.fillStyle = this.color;
+    context.fillStyle = `hsla(${this.color}, 50%, 50%, ${this.opacity * 4})`;
     context.arc(
       this.x + Math.cos(t + this.offset) * this.orbit,
       this.y + Math.sin(t + this.offset) * this.orbit,
@@ -96,7 +98,7 @@ function makeObjects({ length, radius, size }) {
     const angle = temp * idx;
     const x = Math.cos(angle) * size;
     const y = Math.sin(angle) * size;
-    const color = `hsl(${radToDeg(angle)}, 70%, 50%)`;
+    const color = radToDeg(angle);
     const orbit = size * 1.5;
     const offset = -angle;
 
@@ -123,6 +125,15 @@ pane.on('change', () => {
   objects = makeObjects(settings);
 });
 
+let temp = settings.length / 2;
+const tick = () => {
+  if (temp > 1) {
+    temp = Math.max(temp / 2, 1);
+    setTimeout(tick, 4000);
+  }
+};
+setTimeout(tick, 4000);
+
 raf((t) => {
   const { width, height } = context.canvas;
 
@@ -132,5 +143,9 @@ raf((t) => {
   const dt = t / (10000 / settings.speed);
 
   context.translate(width / 2, height / 2);
-  objects.forEach((object) => object.render(context, dt));
+  objects.forEach((object, idx) => {
+    if (idx % temp === 0) {
+      object.render(context, dt);
+    }
+  });
 }).start();

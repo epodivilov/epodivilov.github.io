@@ -54,7 +54,7 @@ function pathFabric(context, options) {
    * @param {number} offset
    */
   return function draw(baseRadius, color, amplitude, offset) {
-    const points = options.points;
+    const { points } = options;
 
     context.beginPath();
     for (let i = 0; i <= points; i++) {
@@ -89,7 +89,7 @@ function pathFabric(context, options) {
  * @param {number} options.speed
  */
 function initCanvas(options) {
-  const size = 1000;
+  const size = Math.min(window.innerHeight, window.innerWidth) * devicePixelRatio;
   options.canvas.width = size;
   options.canvas.height = size;
 
@@ -108,17 +108,17 @@ function initCanvas(options) {
     context.fillStyle = theme === 'dark' ? '#152028' : '#E9FCFF';
     context.fillRect(-width / 2, -height / 2, width, height);
 
-    // hue += 0.7;
+    hue += 0.7;
 
     for (let i = 0; i < circles; i++) {
-      const radius = width * 0.3 - i * 10;
+      const radius = width * 0.2- i * 10;
       const color = `hsl(${hue + i * options.hue}, ${saturation}%, ${lightness}%)`;
       const step = (i * Math.PI) / offset + 3 * (timestamp / (2000 / speed));
-      const amplitude = width * 0.05 + 1.5 * (circles - i); /* * Math.sin(timestamp / (1000 / speed)) */
+      const amplitude = width * 0.05 + 1.5 * (circles - i) * Math.sin(timestamp / (1000 / speed));
 
       draw(radius, color, amplitude, step);
     }
-  }, 24)();
+  })();
 }
 
 initPane(settings);

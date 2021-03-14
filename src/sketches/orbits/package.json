@@ -1,0 +1,11 @@
+{
+  "name": "orbits",
+  "version": "0.0.1",
+  "description": "Animation on pure canvas",
+  "author": "Evgeniy Podivilov <evgeniy.podivilov@gmail.com> (https://twitter.com/senior_idealist)",
+  "license": "MIT",
+  "homepage": "https://epodivilov.github.io/orbits",
+  "dependencies": {
+    "tweakpane": "^2.1.1"
+  }
+}

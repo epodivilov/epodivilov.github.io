@@ -94,8 +94,7 @@ class Object {
 
 function makeObjects({ length, radius, size }) {
   return Array.from({ length }).map((_, idx) => {
-    const temp = (Math.PI * 2) / length;
-    const angle = temp * idx;
+    const angle = (Math.PI * 2) / length * idx;
     const x = Math.cos(angle) * size;
     const y = Math.sin(angle) * size;
     const color = radToDeg(angle);

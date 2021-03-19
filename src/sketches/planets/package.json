@@ -1,0 +1,11 @@
+{
+  "name": "planets",
+  "version": "0.0.1",
+  "description": "Create your own nice pattern by planetary motion",
+  "author": "Evgeniy Podivilov <evgeniy.podivilov@gmail.com> (https://twitter.com/senior_idealist)",
+  "license": "MIT",
+  "homepage": "https://epodivilov.github.io/planets",
+  "dependencies": {
+    "tweakpane": "^2.1.1"
+  }
+}

@@ -1,8 +1,8 @@
+import Tweakpane from 'tweakpane';
 import { raf, randomBetween, range } from './utils';
 import { Particle } from './particle';
 
 function initPane(options, cb) {
-  // eslint-disable-next-line no-undef
   const pane = new Tweakpane({ title: 'Parameters', expanded: false });
 
   pane.addInput(options, 'particles', { min: 1, max: 1000, step: 1 });

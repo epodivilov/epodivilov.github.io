@@ -4,6 +4,7 @@
   box-sizing: border-box;
 }
 
+html,
 body {
   overflow: hidden;
   width: 100vw;

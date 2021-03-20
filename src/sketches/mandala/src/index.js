@@ -111,7 +111,7 @@ function initCanvas(options) {
     hue += 0.7;
 
     for (let i = 0; i < circles; i++) {
-      const radius = width * 0.2- i * 10;
+      const radius = width * 0.2 - i * 10;
       const color = `hsl(${hue + i * options.hue}, ${saturation}%, ${lightness}%)`;
       const step = (i * Math.PI) / offset + 3 * (timestamp / (2000 / speed));
       const amplitude = width * 0.05 + 1.5 * (circles - i) * Math.sin(timestamp / (1000 / speed));

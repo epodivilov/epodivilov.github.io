@@ -4,5 +4,8 @@
   "description": "Simple canvas animation",
   "author": "Evgeniy Podivilov <evgeniy.podivilov@gmail.com> (https://twitter.com/senior_idealist)",
   "license": "MIT",
-  "homepage": "https://epodivilov.github.io/mandala"
+  "homepage": "https://epodivilov.github.io/mandala",
+  "dependencies": {
+    "tweakpane": "^2.1.1"
+  }
 }

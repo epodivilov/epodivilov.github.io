@@ -1,3 +1,4 @@
+import Tweakpane from 'tweakpane';
 import { raf } from './utils';
 
 const prefersColorScheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
@@ -16,9 +17,17 @@ const settings = {
 
 document.body.classList.add(settings.theme);
 
+function updateAddressBarColor(theme) {
+  const meta = document.querySelector('meta[name="theme-color"]');
+
+  meta.content = theme === 'dark' ? '#152028' : '#e9fcff';
+}
+
+updateAddressBarColor(settings.theme);
+
 function initPane(options) {
   const pane = new Tweakpane({ title: 'Parameters', expanded: false });
-  pane.addInput(options, 'theme', { options: { Dark: 'dark', Light: 'light' } }).on('change', (value) => {
+  pane.addInput(options, 'theme', { options: { Dark: 'dark', Light: 'light' } }).on('change', ({ value }) => {
     if (value === 'dark') {
       document.body.classList.add('dark');
       document.body.classList.remove('light');
@@ -28,6 +37,8 @@ function initPane(options) {
       document.body.classList.remove('dark');
       localStorage.setItem('theme', 'light');
     }
+
+    updateAddressBarColor(value);
   });
   pane.addSeparator();
   pane.addInput(options, 'hue', { min: 0, max: 360, step: 1 });

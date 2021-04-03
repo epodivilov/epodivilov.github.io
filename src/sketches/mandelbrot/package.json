@@ -1,0 +1,11 @@
+{
+  "name": "mandelbrot",
+  "version": "0.0.1",
+  "description": "Mandelbrot set navigator",
+  "author": "Evgeniy Podivilov <evgeniy.podivilov@gmail.com> (https://twitter.com/senior_idealist)",
+  "license": "MIT",
+  "homepage": "https://epodivilov.github.io/mandelbrot",
+  "dependencies": {
+    "tweakpane": "^2.2.0"
+  }
+}

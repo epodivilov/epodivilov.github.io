@@ -1,34 +1,25 @@
 import Tweakpane from 'tweakpane';
+import { debounce } from '../../../utils/debounce';
 import { omit } from '../../../utils/omit';
 import { Sketch } from '../../../utils/sketch';
-import { calcIterations, indexToCoordinate, createImageData, parseQuery, calcColor, updateQuery } from './utils';
-
-const STEPS = [0, 0.2, 0.4, 0.6, 0.8, 1];
-const PALETTE = [
-  [89, 14, 34, 255],
-  [12, 3, 68, 255],
-  [52, 137, 218, 255],
-  [255, 255, 255, 255],
-  [255, 210, 47, 255],
-  [174, 67, 13, 255],
-];
+import { parseQuery, updateQuery } from './utils';
 
 function createImage(settings) {
-  const { width, height, x, y, scale, max } = settings;
-  const ratio = height / width;
+  return new Promise((resolve) => {
+    const worker = new Worker('./worker.js');
 
-  return createImageData({ width, height }, (index) => {
-    const point = indexToCoordinate(index, { scale, width, height, center: { x, y }, ratio });
-    const iterations = calcIterations(point, max);
+    worker.onmessage = ({ data }) => {
+      resolve(data);
+    };
 
-    return calcColor(iterations / max, STEPS, PALETTE, 0.7) || [0, 0, 0, 255];
+    worker.postMessage(settings);
   });
 }
 
 const DEFAULT_SETTINGS = {
   max: 50,
   scale: 4,
-  x: -0.3,
+  x: -0.5,
   y: 0,
 };
 
@@ -42,29 +33,43 @@ const settings = {
 };
 
 const store = {
-  image: createImage(settings),
+  image: null,
   area: null,
+  loading: false,
+  refresh() {
+    this.loading = true;
+
+    return createImage(settings).then((result) => {
+      this.image = result;
+      this.loading = false;
+      updateQuery(omit(settings, ['width', 'height']));
+    });
+  },
 };
+
+store.refresh();
 
 pane.addInput(settings, 'max', { min: 50, max: 1000, step: 10, label: 'Iterations' });
 pane.addMonitor(settings, 'scale');
 pane.addMonitor(settings, 'x');
 pane.addMonitor(settings, 'y');
 pane.addSeparator();
-pane.addButton({ title: 'Reset' }).on('click', () => {
-  Object.assign(settings, DEFAULT_SETTINGS);
-  pane.refresh();
-  store.image = createImage(settings);
-  updateQuery(omit(settings, ['width', 'height']));
-});
-pane.on('change', () => {
-  store.image = createImage(settings);
-  updateQuery(omit(settings, ['width', 'height']));
-});
+pane.addButton({ title: 'Reset' }).on(
+  'click',
+  debounce(() => {
+    Object.assign(settings, DEFAULT_SETTINGS);
+    pane.refresh();
+    store.refresh();
+  }, 500)
+);
+pane.on(
+  'change',
+  debounce(() => store.refresh(), 500)
+);
 
 window.addEventListener('popstate', () => {
   Object.assign(settings, parseQuery(window.location.search));
-  store.image = createImage(settings);
+  store.refresh();
 });
 
 window.addEventListener('mousedown', ({ target, clientX, clientY }) => {
@@ -93,9 +98,7 @@ window.addEventListener('mouseup', () => {
       settings.y += dy;
       settings.scale *= width / settings.width;
 
-      store.image = createImage(settings);
-
-      updateQuery(omit(settings, ['width', 'height']));
+      store.refresh();
     }
   }
 
@@ -135,9 +138,7 @@ window.addEventListener('touchend', () => {
       settings.y += dy;
       settings.scale *= width / settings.width;
 
-      store.image = createImage(settings);
-
-      updateQuery(omit(settings, ['width', 'height']));
+      store.refresh();
     }
   }
 
@@ -175,5 +176,11 @@ sketch.run(() => {
 
     sketch.context.rect(cx, cy, width, height);
     sketch.context.stroke();
+  }
+
+  if (store.loading) {
+    sketch.context.font = '48px serif';
+    sketch.context.fillStyle = 'white';
+    sketch.context.fillText('Processing...', settings.width / 2 - 120, settings.height / 2);
   }
 });

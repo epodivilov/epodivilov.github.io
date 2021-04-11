@@ -31,12 +31,16 @@ export class Sketch {
     return this.#canvas.height;
   }
 
-  clear(color = '#152028') {
+  clear = (color = '#152028') => {
     this.context.fillStyle = color;
     this.context.fillRect(0, 0, this.width, this.height);
-  }
+  };
 
-  run(callback, fps = 60) {
+  /**
+   * @param {(timestamp:number, dt: number) => void} callback
+   * @param {number} fps
+   */
+  run = (callback, fps = 60) => {
     if (this.#raf != null) {
       cancelAnimationFrame(this.#raf);
     }
@@ -44,6 +48,7 @@ export class Sketch {
     const delay = 1000 / fps;
     let time = null;
     let frame = -1;
+    let last = 0;
 
     /** @param {number} timestamp */
     const loop = (timestamp) => {
@@ -55,18 +60,24 @@ export class Sketch {
 
       if (seg > frame) {
         frame = seg;
+
         this.context.save();
-        callback(timestamp);
+        callback(timestamp, timestamp - last);
         this.context.restore();
+
+        last = timestamp;
       }
 
       this.#raf = requestAnimationFrame(loop);
     };
 
     loop(0);
-  }
+  };
 
-  runs(tuples = []) {
+  /**
+   * @param {[(timestamp:number) => void, number][]} tuples
+   */
+  runs = (tuples = []) => {
     if (this.#raf != null) {
       cancelAnimationFrame(this.#raf);
     }
@@ -99,5 +110,5 @@ export class Sketch {
     };
 
     mainLoop(0);
-  }
+  };
 }

@@ -3,6 +3,6 @@
  * @param {number} degrees
  * @returns {number}
  */
-export function radToDeg(degrees) {
+export function degToRad(degrees) {
   return (degrees * Math.PI) / 180;
 }

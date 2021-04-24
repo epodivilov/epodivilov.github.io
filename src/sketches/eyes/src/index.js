@@ -2,8 +2,8 @@ import canvasSketch from 'canvas-sketch';
 import { Circle } from '../../../utils/geometries';
 import { random } from '../../../utils/random';
 
-function easeOutExpo(x) {
-  return x === 1 ? 1 : 1 - 2 ** (-10 * x);
+function ease(x) {
+  return x === 0 ? 0 : 2 ** (10 * x - 10);
 }
 
 class Eye {
@@ -25,12 +25,17 @@ class Eye {
 
   blink() {
     this.scale = 0;
+    this.start = null;
 
-    setTimeout(() => this.blink(), random(3000, 6000));
+    setTimeout(() => this.blink(), random(4000, 6000));
   }
 
-  render(context, dt) {
-    this.scale = easeOutExpo(Math.min(this.scale + dt / 1000, 1));
+  render(context, time) {
+    if (this.start == null) {
+      this.start = time;
+    }
+
+    this.scale = ease(Math.min((time - this.start) / 0.1, 1));
 
     context.save();
     context.translate(this.x, this.y);
@@ -80,33 +85,38 @@ canvasSketch(
 
     const mouse = { x: 0, y: 0 };
 
-    window.addEventListener('mousemove', ({ clientX, clientY }) => {
+    context.canvas.addEventListener('mousemove', ({ clientX, clientY }) => {
       mouse.x = clientX - width / 2;
       mouse.y = clientY - height / 2;
     });
 
-    window.addEventListener('touchmove', ({ touches }) => {
+    context.canvas.addEventListener('touchmove', ({ touches }) => {
       mouse.x = touches[0].clientX - width / 2;
       mouse.y = touches[0].clientY - height / 2;
     });
 
-    window.addEventListener('click', ({ clientX, clientY }) => {
-      const x = clientX - width / 2;
-      const y = clientY - height / 2;
-      const size = Math.floor(random(25, 75));
+    setTimeout(() => {
+      context.canvas.addEventListener('click', ({ clientX, clientY }) => {
+        const x = clientX - width / 2;
+        const y = clientY - height / 2;
+        const size = Math.floor(random(25, 75));
 
-      eyes.push(new Eye({ x, y, size }));
-    });
+        eyes.push(new Eye({ x, y, size }));
+      });
+    }, 1000);
 
-    return (/** @type {Params} */ { deltaTime }) => {
+    return (/** @type {Params} */ { time }) => {
       context.translate(width / 2, height / 2);
       context.fillStyle = 'black';
       context.fillRect(-width / 2, -height / 2, width, height);
 
       eyes.forEach((eye) => {
-        eye.render(context, deltaTime, mouse);
+        eye.render(context, time, mouse);
         eye.lookAt(mouse);
       });
+
+      // context.fillStyle = 'red';
+      // context.fill(new Circle(mouse.x, mouse.y, 2));
     };
   },
   { animate: true }

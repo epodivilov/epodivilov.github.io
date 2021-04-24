@@ -1,0 +1,3 @@
+import Tweakpane from 'tweakpane';
+
+const pane = new Tweakpane({ title: 'Parameters', expanded: false });

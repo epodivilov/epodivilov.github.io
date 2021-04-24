@@ -85,6 +85,11 @@ canvasSketch(
       mouse.y = clientY - height / 2;
     });
 
+    window.addEventListener('touchmove', ({ touches }) => {
+      mouse.x = touches[0].clientX - width / 2;
+      mouse.y = touches[0].clientY - height / 2;
+    });
+
     window.addEventListener('click', ({ clientX, clientY }) => {
       const x = clientX - width / 2;
       const y = clientY - height / 2;

@@ -1,0 +1,14 @@
+{
+  "name": "eyes",
+  "version": "0.0.1",
+  "description": "Implementing cursor-tracking eyes on canvas",
+  "author": "Evgeniy Podivilov <evgeniy.podivilov@gmail.com> (https://twitter.com/senior_idealist)",
+  "license": "MIT",
+  "homepage": "https://epodivilov.github.io/eyes",
+  "browserslist": [
+    "last 1 Chrome version"
+  ],
+  "dependencies": {
+    "canvas-sketch": "^0.7.4"
+  }
+}

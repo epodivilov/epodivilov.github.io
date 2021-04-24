@@ -81,7 +81,7 @@ canvasSketch(
   (/** @type {Params} */ params) => {
     const { context, width, height } = params;
 
-    const eyes = [];
+    const eyes = [new Eye({ x: 0, y: 0, size: 24 })];
 
     const mouse = { x: 0, y: 0 };
 

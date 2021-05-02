@@ -1,0 +1,15 @@
+{
+  "name": "waves",
+  "version": "0.0.1",
+  "description": "Psychedelic waves on pure JS",
+  "author": "Evgeniy Podivilov <evgeniy.podivilov@gmail.com> (https://twitter.com/senior_idealist)",
+  "license": "MIT",
+  "homepage": "https://epodivilov.github.io/waves",
+  "browserslist": [
+    "last 1 Chrome version"
+  ],
+  "dependencies": {
+    "canvas-sketch": "^0.7.4",
+    "tweakpane": "^2.4.3"
+  }
+}

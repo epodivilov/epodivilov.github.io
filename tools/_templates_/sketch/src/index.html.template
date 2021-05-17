@@ -11,7 +11,7 @@
   </head>
   <body>
     <a
-      href="https://github.com/epodivilov/epodivilov.github.io/tree/main/src/sketches/tissue"
+      href="https://github.com/epodivilov/epodivilov.github.io/tree/main/src/sketches/<%= name %>"
       class="github-corner"
       aria-label="View source on GitHub"
     >

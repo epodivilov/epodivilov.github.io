@@ -1,0 +1,15 @@
+{
+  "name": "bubbles",
+  "version": "0.0.1",
+  "description": "Bubbles on canvas + svg",
+  "author": "Evgeniy Podivilov <evgeniy.podivilov@gmail.com> (https://twitter.com/senior_idealist)",
+  "license": "MIT",
+  "homepage": "https://epodivilov.github.io/bubbles",
+  "browserslist": [
+    "last 1 Chrome version"
+  ],
+  "dependencies": {
+    "canvas-sketch": "^0.7.4",
+    "tweakpane": "^3.0.0"
+  }
+}

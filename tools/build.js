@@ -17,14 +17,7 @@ function findSketch(name, from) {
     .then((list) => list.find((it) => it && it.endsWith(name)));
 }
 
-const [name] = process.argv.slice(2);
-const root = resolve(process.cwd(), 'src/sketches/');
-
-if (name == null) {
-  throw new Error('Need provide name of sketch');
-}
-
-(async () => {
+async function build(name, root) {
   const projectDir = await findSketch(name, root);
 
   const sketch = new Bundler([resolve(projectDir, './src/index.html')], {
@@ -40,4 +33,29 @@ if (name == null) {
   });
 
   await home.bundle();
-})();
+}
+
+const [name] = process.argv.slice(2);
+const root = resolve(process.cwd(), 'src/sketches/');
+
+if (name == null) {
+  throw new Error('Need provide name of sketch');
+}
+
+if (name === '--all') {
+  const isDraft = /wip-/;
+  fs.readdir(root)
+    .then((result) =>
+      Promise.all(
+        result.map(async (it) => {
+          const path = resolve(root, it);
+
+          return (await fs.stat(path)).isDirectory() ? it : null;
+        })
+      )
+    )
+    .then((list) => list.filter((it) => it && isDraft.test(it) === false))
+    .then(list => Promise.all(list.map((it) => build(it, root))));
+} else {
+  build(name, root);
+}

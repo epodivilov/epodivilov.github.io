@@ -1,0 +1,42 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+.octo-arm {
+  transform-origin: 130px 106px;
+}
+
+.github-corner:hover .octo-arm {
+  animation: octocat-wave 560ms ease-in-out;
+}
+
+.github-corner svg {
+  position: absolute;
+  top: 0;
+  right: 0;
+  border: 0;
+  color: #fff;
+  fill: #151513;
+}
+
+body .tp-dfwv {
+  z-index: 100;
+  top: auto;
+  bottom: 8px;
+  width: auto;
+  min-width: 256px;
+}
+
+
+/*# sourceMappingURL=src.30f726c3.css.map */

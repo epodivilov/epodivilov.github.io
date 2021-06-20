@@ -1,0 +1,15 @@
+{
+  "name": "clouds",
+  "version": "0.0.1",
+  "description": "Just clouds running in a circle and consisting of circles",
+  "author": "Evgeniy Podivilov <evgeniy.podivilov@gmail.com> (https://twitter.com/senior_idealist)",
+  "license": "MIT",
+  "homepage": "https://epodivilov.github.io/clouds",
+  "browserslist": [
+    "last 1 Chrome version"
+  ],
+  "dependencies": {
+    "canvas-sketch": "^0.7.4",
+    "tweakpane": "^3.0.2"
+  }
+}

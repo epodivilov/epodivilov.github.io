@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 130 110">
+      <defs>
+        <linearGradient id="strokeGradient" x1="100%" y1="100%">
+          <stop offset="0%" stop-color="#f15a31">
+            <animate
+              id="animate-stroke"
+              attributeName="stop-color"
+              dur="6000ms"
+              repeatCount="indefinite"
+              calcMode="spline"
+              keyTimes="0; .20; .33; .40; .45; .55; .60; .67; .80; 1"
+              keySplines="0,0,1,1; 0,0,1,1; 0,0,1,1; 0,0,1,1; 0,0,1,1; 0,0,1,1; 0,0,1,1; 0,0,1,1; 0,0,1,1"
+              values="#f15a31; #ffd31b; #a6ce42; #007ac1; #007ac1; #007ac1; #007ac1; #a6ce42; #ffd31b; #f15a31;"
+            />
+          </stop>
+        </linearGradient>
+
+        <animate
+          id="animate-dashoffset"
+          xlink:href="#el"
+          attributeName="stroke-dashoffset"
+          from="372"
+          to="0"
+          dur="1900ms"
+          repeatCount="indefinite"
+          calcMode="linear"
+        />
+      </defs>
+
+      <path
+        fill="none"
+        stroke="rgba(0, 0, 0, 0.05)"
+        stroke-width="3"
+        d="M 85 85 C -5 16 -39 127 78 30 C 126 -9 57 -16 85 85 C 94 123 124 111 85 85 Z"
+      />
+      <path
+        id="el"
+        fill="none"
+        stroke="url(#strokeGradient)"
+        stroke-dasharray="60 310"
+        stroke-dashoffset="372"
+        stroke-linecap="round"
+        stroke-width="3"
+        d="M 85 85 C -5 16 -39 127 78 30 C 126 -9 57 -16 85 85 C 94 123 124 111 85 85 Z"
+      />
+    </svg>

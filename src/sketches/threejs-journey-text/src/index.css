@@ -21,6 +21,12 @@ body {
   animation: octocat-wave 560ms ease-in-out;
 }
 
+.github-corner {
+  position: fixed;
+  z-index: 1;
+  right: 0;
+}
+
 .github-corner svg {
   position: absolute;
   top: 0;
@@ -42,7 +48,7 @@ body .tp-dfwv {
   position: fixed;
   top: 0;
   left: 0;
-  outline: none;
   background: rgb(160, 210, 243);
   background: linear-gradient(0deg, rgba(160, 210, 243, 1) 0%, rgba(79, 151, 213, 1) 100%);
+  outline: none;
 }

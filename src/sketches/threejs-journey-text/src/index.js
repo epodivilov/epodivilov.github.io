@@ -108,8 +108,9 @@ const sizes = {
  * Camera
  */
 // Base camera
-const camera = new THREE.PerspectiveCamera(75, sizes.width / sizes.height, 0.1, 100);
-camera.position.set(0, -0.25, 3);
+const aspect = sizes.width / sizes.height;
+const camera = new THREE.PerspectiveCamera(75, aspect, 0.1, 100);
+camera.position.set(0, -0.25, aspect < 1 ? 6 : 3);
 scene.add(camera);
 
 // Controls

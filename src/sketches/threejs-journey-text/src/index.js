@@ -20,8 +20,8 @@ const scene = new THREE.Scene();
  * Textures
  */
 const textureLoader = new THREE.TextureLoader();
-const gradientMap = textureLoader.load('/textures/gradients.jpg');
-const map = textureLoader.load('/textures/donut.jpg');
+const gradientMap = textureLoader.load('./textures/gradients.jpg');
+const map = textureLoader.load('./textures/donut.jpg');
 
 /**
  * Lights
@@ -41,7 +41,7 @@ scene.add(pointLight);
 const fontLoader = new FontLoader();
 const textMaterial = new THREE.MeshToonMaterial({ color: 0xfed90f, gradientMap });
 
-fontLoader.load('/fonts/akbar.json', (font) => {
+fontLoader.load('./fonts/akbar.json', (font) => {
   const theGeometry = new TextGeometry('The', {
     font,
     size: 0.2,

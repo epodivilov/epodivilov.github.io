@@ -1,6 +1,7 @@
 const Bundler = require('parcel-bundler');
 const fs = require('fs/promises');
 const { resolve } = require('path');
+const fse = require('fs-extra');
 
 function findSketch(name, from) {
   return fs
@@ -19,9 +20,16 @@ function findSketch(name, from) {
 
 async function build(name, root) {
   const projectDir = await findSketch(name, root);
+  const staticDir = resolve(projectDir, 'static');
+  const outDir = resolve(process.cwd(), `./docs/${name}`);
+
+  const hasStatic = await (await fs.lstat(staticDir)).isDirectory();
+  if (hasStatic) {
+    await fse.copy(staticDir, outDir, { overwrite: true, recursive: true });
+  }
 
   const sketch = new Bundler([resolve(projectDir, './src/index.html')], {
-    outDir: resolve(process.cwd(), `./docs/${name}`),
+    outDir,
     publicUrl: './',
   });
 
@@ -55,7 +63,7 @@ if (name === '--all') {
       )
     )
     .then((list) => list.filter((it) => it && isDraft.test(it) === false))
-    .then(list => Promise.all(list.map((it) => build(it, root))));
+    .then((list) => Promise.all(list.map((it) => build(it, root))));
 } else {
   build(name, root);
 }

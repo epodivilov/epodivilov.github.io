@@ -23,10 +23,12 @@ async function build(name, root) {
   const staticDir = resolve(projectDir, 'static');
   const outDir = resolve(process.cwd(), `./docs/${name}`);
 
-  const hasStatic = await (await fs.lstat(staticDir)).isDirectory();
-  if (hasStatic) {
-    await fse.copy(staticDir, outDir, { overwrite: true, recursive: true });
-  }
+  try {
+    const hasStatic = await (await fs.lstat(staticDir)).isDirectory();
+    if (hasStatic) {
+      await fse.copy(staticDir, outDir, { overwrite: true, recursive: true });
+    }
+  } catch (error) {}
 
   const sketch = new Bundler([resolve(projectDir, './src/index.html')], {
     outDir,

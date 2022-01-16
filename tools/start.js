@@ -29,10 +29,12 @@ if (name == null) {
   const projectDir = await findSketch(name, root);
   const staticDir = resolve(projectDir, 'static');
 
-  const hasStatic = await (await fs.lstat(staticDir)).isDirectory();
-  if (hasStatic) {
-    await fse.copy(staticDir, resolve(process.cwd(), 'dist'), { overwrite: true, recursive: true });
-  }
+  try {
+    const hasStatic = await (await fs.lstat(staticDir)).isDirectory();
+    if (hasStatic) {
+      await fse.copy(staticDir, resolve(process.cwd(), 'dist'), { overwrite: true, recursive: true });
+    }
+  } catch (error) {}
 
   const bundler = new Bundler([resolve(projectDir, './src/index.html')]);
 

@@ -1,0 +1,19 @@
+{
+  "name": "world-of-giants",
+  "version": "0.0.1",
+  "description": "",
+  "author": "Evgeniy Podivilov <evgeniy.podivilov@gmail.com> (https://twitter.com/senior_idealist)",
+  "license": "MIT",
+  "homepage": "https://epodivilov.github.io/world-of-giants",
+  "browserslist": [
+    "last 1 Chrome version"
+  ],
+  "dependencies": {
+    "perlin-noise-3d": "^0.5.4",
+    "three": "^0.137.5",
+    "tweakpane": "^3.0.7"
+  },
+  "devDependencies": {
+    "@tweakpane/core": "^1.0.8"
+  }
+}

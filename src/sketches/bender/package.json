@@ -1,0 +1,14 @@
+{
+  "name": "bender",
+  "version": "0.0.1",
+  "description": "",
+  "author": "Evgeniy Podivilov <evgeniy.podivilov@gmail.com> (https://twitter.com/senior_idealist)",
+  "license": "MIT",
+  "homepage": "https://epodivilov.github.io/bender",
+  "browserslist": [
+    "last 1 Chrome version"
+  ],
+  "dependencies": {
+    "three": "^0.137.5"
+  }
+}

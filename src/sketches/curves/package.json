@@ -1,0 +1,29 @@
+{
+  "name": "curves",
+  "version": "0.0.1",
+  "description": "",
+  "author": "Evgeniy Podivilov <evgeniy.podivilov@gmail.com> (https://twitter.com/senior_idealist)",
+  "license": "MIT",
+  "homepage": "https://epodivilov.github.io/curves",
+  "browserslist": [
+    "last 1 Chrome version"
+  ],
+  "main": "index.js",
+  "dependencies": {
+    "canvas-sketch": "^0.7.4",
+    "tweakpane": "^3.0.7"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/epodivilov/epodivilov.github.io.git"
+  },
+  "bugs": {
+    "url": "https://github.com/epodivilov/epodivilov.github.io/issues"
+  },
+  "devDependencies": {
+    "@tweakpane/core": "^1.0.8"
+  }
+}

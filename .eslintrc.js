@@ -1,14 +1,16 @@
+/** @type {import('eslint').Linter.Config} */
 module.exports = {
   root: true,
   env: {
     browser: true,
     es2021: true,
   },
-  parser: 'babel-eslint',
+  parser: '@babel/eslint-parser',
   extends: ['airbnb-base', 'prettier'],
   parserOptions: {
     ecmaVersion: 12,
     sourceType: 'module',
+    requireConfigFile: false,
   },
   rules: {
     'no-unused-vars': [
@@ -22,6 +24,6 @@ module.exports = {
     ],
     'max-len': ['error', { code: 120 }],
     'import/prefer-default-export': 'off',
-    'no-bitwise': 'off'
+    'no-bitwise': 'off',
   },
 };

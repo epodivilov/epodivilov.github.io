@@ -1,0 +1,17 @@
+{
+  "name": "shadow-button",
+  "version": "0.0.1",
+  "description": "",
+  "author": "Evgeniy Podivilov <evgeniy.podivilov@gmail.com> (https://twitter.com/senior_idealist)",
+  "license": "MIT",
+  "homepage": "https://epodivilov.github.io/shadow-button",
+  "browserslist": [
+    "last 1 Chrome version"
+  ],
+  "devDependencies": {
+    "@tweakpane/core": "^1.0.8"
+  },
+  "dependencies": {
+    "tweakpane": "^3.0.7"
+  }
+}

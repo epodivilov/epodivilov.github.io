@@ -1,0 +1,11 @@
+{
+  "name": "tractor",
+  "version": "0.0.1",
+  "description": "",
+  "author": "Evgeniy Podivilov <evgeniy.podivilov@gmail.com> (https://twitter.com/senior_idealist)",
+  "license": "MIT",
+  "homepage": "https://epodivilov.github.io/tractor",
+  "browserslist": [
+    "last 1 Chrome version"
+  ]
+}

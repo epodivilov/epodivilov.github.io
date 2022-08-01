@@ -48,7 +48,7 @@ body {
   background-color: rgb(0 0 0 / 10%);
   border-radius: 40px;
   box-shadow: 0 0 20px 0 rgb(0 0 0 / 20%);
-  content: '';
+  content: "";
 }
 
 .wheel {
@@ -67,7 +67,7 @@ body {
   height: 100%;
   background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' rx='100' ry='100' stroke='%232b2b31' stroke-width='15%25' stroke-dasharray='5%25%2c 30%25' stroke-dashoffset='0' stroke-linecap='round'/%3e%3c/svg%3e");
   border-radius: 50%;
-  content: '';
+  content: "";
 }
 
 .wheel .disk {
@@ -88,7 +88,7 @@ body {
   height: 100%;
   background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect x='15%25' y='15%25' width='70%25' height='70%25' fill='none' rx='100' ry='100' stroke='%232b2b31' stroke-width='10%25' stroke-dasharray='1%25%2c 43%25' stroke-dashoffset='0' stroke-linecap='round'/%3e%3c/svg%3e");
   border-radius: 50%;
-  content: '';
+  content: "";
 }
 
 .wheel-back {
@@ -116,7 +116,7 @@ body {
   overflow: hidden;
   width: 50%;
   height: 30%;
-  border-radius: 100px 60px 0 0;
+  border-radius: 60px 60px 0 0;
 }
 
 .tractor-body::before {
@@ -125,21 +125,22 @@ body {
   right: 0;
   width: 20%;
   height: 34%;
-  background-image: linear-gradient(
-    0deg,
-    #bc3720 0%,
-    #bc3720 20%,
-    transparent 20%,
-    transparent 40%,
-    #bc3720 40%,
-    #bc3720 60%,
-    transparent 60%,
-    transparent 80%,
-    #bc3720 80%,
-    #bc3720 100%
-  );
+  background-image:
+    linear-gradient(
+      0deg,
+      #bc3720 0%,
+      #bc3720 20%,
+      transparent 20%,
+      transparent 40%,
+      #bc3720 40%,
+      #bc3720 60%,
+      transparent 60%,
+      transparent 80%,
+      #bc3720 80%,
+      #bc3720 100%
+    );
   border-radius: 10px 0 0 10px;
-  content: '';
+  content: "";
   transform: skew(20deg);
 }
 
@@ -154,12 +155,12 @@ body {
   border-bottom: transparent;
   background-color: #bc3720;
   border-radius: 50px 0 0;
-  content: '';
+  content: "";
 }
 
 .tractor-wheel {
   position: absolute;
-  bottom: 44%;
+  bottom: 43%;
   left: 44%;
   width: 12%;
   height: 12%;
@@ -194,7 +195,7 @@ body {
   height: 15%;
   border: 2px solid #a33223;
   background-color: #dc4d34;
-  content: '';
+  content: "";
   transform: translate(-50%, -50%) perspective(10px) rotateX(-5deg);
 }
 
@@ -238,7 +239,7 @@ body {
   height: 20%;
   border-right: 4px solid #bd8b5c;
   border-left: 4px solid #bd8b5c;
-  content: '';
+  content: "";
   transform: skew(-45deg) rotate(-10deg);
 }
 
@@ -250,7 +251,7 @@ body {
   height: 20%;
   border-right: 4px solid #bd8b5c;
   border-left: 4px solid #bd8b5c;
-  content: '';
+  content: "";
   transform: skew(45deg) rotate(-10deg);
 }
 
@@ -273,7 +274,7 @@ body {
   height: 10px;
   background-color: #303035;
   border-radius: 50%;
-  content: '';
+  content: "";
 }
 
 .eyse::before {
@@ -303,7 +304,7 @@ body {
   height: 10px;
   background-color: #bd8b5c;
   border-radius: 50%;
-  content: '';
+  content: "";
 }
 
 .piglet::before {
@@ -340,21 +341,21 @@ body {
 }
 
 .peter-body .arm {
+  position: absolute;
+  top: 15%;
+  left: 10%;
   width: 80%;
   height: 30%;
   border: 3px solid #c0c1c6;
-  position: absolute;
   transform: rotate(10deg);
-  top: 15%;
-  left: 10%;
 }
 
 .peter-body .arm::before {
-  content: '';
   position: absolute;
   border: 4px solid #c0c1c6;
-  border-bottom: none;
   border-right: none;
+  border-bottom: none;
   background-color: white;
   border-radius: 50%;
+  content: "";
 }

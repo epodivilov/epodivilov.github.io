@@ -12,6 +12,7 @@ export function raf(callback, fps = 60) {
   let time = null;
   let frame = -1;
   let rafId = null;
+  let stop = false;
 
   /** @param {number} timestamp */
   function loop(timestamp) {
@@ -23,10 +24,12 @@ export function raf(callback, fps = 60) {
 
     if (seg > frame) {
       frame = seg;
-      callback(timestamp);
+      callback(timestamp-time);
     }
 
-    rafId = requestAnimationFrame(loop);
+    if (!stop) {
+      rafId = requestAnimationFrame(loop);
+    }
   }
 
   return {
@@ -36,10 +39,12 @@ export function raf(callback, fps = 60) {
         rafId = null;
         time = null;
         frame = -1;
+        stop = true;
       }
     },
     start() {
-      loop(0);
+      stop = false;
+      rafId = requestAnimationFrame(loop);
     },
   };
 }

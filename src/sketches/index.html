@@ -6,21 +6,156 @@
     <title>Sketchbook</title>
     <style>
       body {
+        font-family: 'Monaco', 'Courier New', monospace;
+        font-size: 14px;
+        line-height: 1.6;
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 40px 20px;
+        background: #fff;
+        color: #333;
+      }
+
+      .header {
+        margin-bottom: 40px;
+        padding-bottom: 20px;
+        border-bottom: 1px solid #eee;
         display: flex;
-        width: 100vw;
-        height: 100vh;
+        justify-content: space-between;
+        align-items: flex-start;
+      }
+
+      .header-left {
+        flex: 1;
+      }
+
+      .header h1 {
+        font-size: 20px;
+        margin: 0 0 5px 0;
+        font-weight: normal;
+      }
+
+      .header .subtitle {
+        font-size: 14px;
+        color: #666;
+        margin: 0;
+      }
+
+      .contact-links {
+        display: flex;
         flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        font-family: sans-serif;
+        gap: 8px;
+        align-items: flex-end;
+      }
+
+      .contact-links a {
+        color: #0066cc;
+        text-decoration: none;
+        font-size: 13px;
+      }
+
+      .contact-links a:hover {
+        text-decoration: underline;
+      }
+
+      .contact-links a:before {
+        content: "→ ";
+      }
+
+      h2 {
+        font-size: 18px;
+        margin-bottom: 30px;
+        font-weight: normal;
+      }
+
+      .sketch-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+
+      .sketch-list li {
+        margin-bottom: 8px;
+        padding-left: 20px;
+        position: relative;
+      }
+
+      .sketch-list li:before {
+        content: "→";
+        position: absolute;
+        left: 0;
+      }
+
+      .sketch-list a {
+        color: #0066cc;
+        text-decoration: none;
+      }
+
+      .sketch-list a:hover {
+        text-decoration: underline;
+      }
+
+      .footer {
+        margin-top: 50px;
+        padding-top: 20px;
+        border-top: 1px solid #eee;
+        font-size: 12px;
+        color: #666;
       }
     </style>
   </head>
   <body>
-    <h1>🚧 Page under construction 🚧</h1>
-    <p
-      >You can find my sketches in my twitter account
-      <a href="https://twitter.com/senior_idealist" rel="noopener noreferrer">@senior_idealist</a></p
-    >
+    <div class="header">
+      <div class="header-left">
+        <h1>Evgeny Podivilov</h1>
+        <div class="subtitle">Frontend Developer</div>
+      </div>
+      <div class="contact-links">
+        <a href="https://twitter.com/senior_idealist">twitter</a>
+        <a href="https://t.me/epodivilov">telegram</a>
+        <a href="https://epodivilov.github.io/curriculum-vitae/">cv</a>
+      </div>
+    </div>
+
+    <h2>~/sketchbook</h2>
+
+    <ul class="sketch-list">
+      <li><a href="/bender/">bender</a></li>
+      <li><a href="/bouncing-logo/">bouncing-logo</a></li>
+      <li><a href="/bubbles/">bubbles</a></li>
+      <li><a href="/cards/">cards</a></li>
+      <li><a href="/clouds/">clouds</a></li>
+      <li><a href="/curves/">curves</a></li>
+      <li><a href="/dna/">dna</a></li>
+      <li><a href="/dragon-curve/">dragon-curve</a></li>
+      <li><a href="/eight-ways-animate-spinner/">eight-ways-animate-spinner</a></li>
+      <li><a href="/eyes/">eyes</a></li>
+      <li><a href="/fountain/">fountain</a></li>
+      <li><a href="/hamburger/">hamburger</a></li>
+      <li><a href="/homer/">homer</a></li>
+      <li><a href="/mandala/">mandala</a></li>
+      <li><a href="/mandelbrot/">mandelbrot</a></li>
+      <li><a href="/orbits/">orbits</a></li>
+      <li><a href="/parametric-geometry/">parametric-geometry</a></li>
+      <li><a href="/particle-trail/">particle-trail</a></li>
+      <li><a href="/planets/">planets</a></li>
+      <li><a href="/semicircles/">semicircles</a></li>
+      <li><a href="/shadow-button/">shadow-button</a></li>
+      <li><a href="/spirograph/">spirograph</a></li>
+      <li><a href="/starfall/">starfall</a></li>
+      <li><a href="/threejs-journey-cannon/">threejs-journey-cannon</a></li>
+      <li><a href="/threejs-journey-galaxy/">threejs-journey-galaxy</a></li>
+      <li><a href="/threejs-journey-text/">threejs-journey-text</a></li>
+      <li><a href="/tissue/">tissue</a></li>
+      <li><a href="/tractor/">tractor</a></li>
+      <li><a href="/tunnel/">tunnel</a></li>
+      <li><a href="/waves/">waves</a></li>
+      <li><a href="/wood/">wood</a></li>
+      <li><a href="/world-of-giants/">world-of-giants</a></li>
+    </ul>
+
+    <div class="footer">
+      <p>Built with ❤️ and lots of ☕</p>
+    </div>
   </body>
 </html>

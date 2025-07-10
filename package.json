@@ -37,6 +37,8 @@
   },
   "workspaces": [
     "src/sketches/wood",
-    "src/sketches/curves"
+    "src/sketches/curves",
+    "src/sketches/tree-builder",
+    "src/sketches/bouncing-logo"
   ]
 }

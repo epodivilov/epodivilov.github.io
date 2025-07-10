@@ -1,0 +1,26 @@
+{
+  "name": "tree-builder",
+  "version": "0.0.1",
+  "description": "",
+  "author": "Evgeniy Podivilov <evgeniy.podivilov@gmail.com> (https://twitter.com/senior_idealist)",
+  "license": "MIT",
+  "homepage": "https://epodivilov.github.io/tree-builder",
+  "browserslist": [
+    "last 1 Chrome version"
+  ],
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/epodivilov/epodivilov.github.io.git"
+  },
+  "keywords": [],
+  "bugs": {
+    "url": "https://github.com/epodivilov/epodivilov.github.io/issues"
+  },
+  "dependencies": {
+    "three": "^0.137.5"
+  }
+}
